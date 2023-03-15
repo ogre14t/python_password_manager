@@ -1,3 +1,4 @@
+import bcrypt
 import cryptography
 import sqlite3
 """
@@ -8,3 +9,8 @@ Password Manager with encryption - Build a password manager application with Pyt
 con = sqlite3.connect("./data.db")
 cur = con.cursor()
 
+def gen_key():
+    key = cryptography.Fernet.generate_key()
+
+def load_key(user: str) -> str:
+    return cur.execute(f"SELECT key FROM users where {user} == username")
